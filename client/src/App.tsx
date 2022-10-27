@@ -1,12 +1,19 @@
+import { ApolloProvider } from "@apollo/client";
+import AddClientModal from "./components/client/AddClientModal";
+import Clients from "./components/client/Clients";
 import Header from "./components/Header";
+import { client } from "./gql/config";
 
 function App() {
   return (
     <>
-      <Header />
-      <div className="container">
-        <h1>Hello World</h1>
-      </div>
+      <ApolloProvider client={client}>
+        <Header />
+        <div className="container">
+          <AddClientModal />
+          <Clients />
+        </div>
+      </ApolloProvider>
     </>
   );
 }

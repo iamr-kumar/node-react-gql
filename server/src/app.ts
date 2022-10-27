@@ -2,8 +2,8 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { graphqlHTTP } from "express-graphql";
 import schema from "./schema/schema";
-import colors from "colors";
 import { connectDb } from "./config/db";
+import cors from "cors";
 
 dotenv.config();
 
@@ -11,6 +11,8 @@ const app: Express = express();
 const port = process.env.PORT || 5000;
 
 connectDb();
+
+app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Server running");
